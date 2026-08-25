@@ -23,23 +23,23 @@ Aplikasi ini **HANYA** untuk digunakan di lingkungan lokal, laboratorium, atau s
 <img width="1535" height="827" alt="Dashboard_Admin" src="https://github.com/user-attachments/assets/5b4d19cd-275c-4fcd-bf20-d52790c979bf" />
 - **Manajemen Products** – CRUD produk keamanan (SKU, harga, stok).
 <img width="1535" height="821" alt="Products" src="https://github.com/user-attachments/assets/dca10d04-00bd-42d1-ac16-1951907f417c" />
-- **Manajemen Projects** – Proyek pentest, komentar (Stored XSS).
+- **Manajemen Projects** – Proyek pentest, komentar.
 - <img width="1535" height="817" alt="Projects" src="https://github.com/user-attachments/assets/b8c94f1d-103e-43b0-988d-4947d28f6773" />
-- **Manajemen Clients** – Data klien (IDOR, SQLi).
+- **Manajemen Clients** – Data klien.
 - <img width="1535" height="830" alt="Clients" src="https://github.com/user-attachments/assets/198355e1-bff3-4ae3-9354-7df27224e639" />
-- **Manajemen Employees** – Data karyawan internal (IDOR, SQLi).
+- **Manajemen Employees** – Data karyawan internal.
 - <img width="1535" height="822" alt="Employees" src="https://github.com/user-attachments/assets/22bff2d7-f2d2-41f1-b5b7-6e651922c42c" />
-- **Vulnerability Database (Vuln DB)** – Referensi kerentanan (SQLi, IDOR).
+- **Vulnerability Database (Vuln DB)** – Referensi kerentanan.
 <img width="1535" height="827" alt="Vuln_DB" src="https://github.com/user-attachments/assets/84af9b9a-17cc-42a2-8452-d8f1ff58dc2b" />
-- **Network Tools** – Ping & Traceroute (OS Command Injection).
+- **Network Tools** – Ping & Traceroute.
 <img width="1535" height="817" alt="Network_Tools" src="https://github.com/user-attachments/assets/743d4682-702f-495a-a863-8c56eb75743e" />
-- **Manajemen Files** – Upload, download, view file (IDOR, LFI, upload tanpa validasi).
+- **Manajemen Files** – Upload, download, view file.
 <img width="1535" height="826" alt="Files" src="https://github.com/user-attachments/assets/d2b8a58c-581e-4fdc-a8b0-604abfabcd0c" />
-- **Import Data** – Import users & products via CSV (CSV Injection).
+- **Import Data** – Import users & products via CSV.
 - <img width="1535" height="830" alt="Import Data" src="https://github.com/user-attachments/assets/844593cb-25fb-45e0-83c8-aedbae504392" />
-- **Import File/URL** – Import file dari URL (SSRF).
+- **Import File/URL** – Import file dari URL.
 - <img width="1535" height="826" alt="Files" src="https://github.com/user-attachments/assets/9006f3e8-13da-4d42-b290-a14edb7cca7d" />
-- **Profile Management** – Update profil, avatar upload, avatar dari URL (SSRF).
+- **Profile Management** – Update profil, avatar upload, avatar dari URL.
 <img width="1532" height="820" alt="Profile_Admin" src="https://github.com/user-attachments/assets/b6db5b71-55e0-4036-b18b-a3238615b478" />
 <img width="1530" height="847" alt="Profile_User" src="https://github.com/user-attachments/assets/1665b14a-6036-4590-97e3-d9eb08ccbd63" />
 - **Admin Panel** – Kelola user, file, dan dashboard admin.
