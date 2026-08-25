@@ -137,8 +137,23 @@ Beberapa parameter URL dapat dialihkan ke domain eksternal tanpa validasi.
 
 ## Instalasi
 
-1. **Clone atau salin project** ke folder web server (misal `C:\laragon\www\pentest-lab`).
+### Persyaratan
 
-2. **Install dependencies:**
-   ```bash
-   composer install
+Sebelum memulai, pastikan sudah terpasang:
+
+- **PHP** minimal versi 8.3
+- **Composer** (https://getcomposer.org)
+- **MySQL/MariaDB** (disarankan memakai Laragon/XAMPP)
+- **Git** (opsional, untuk clone repo)
+
+### Langkah-langkah Instalasi
+
+#### 1. Clone atau salin project ke folder web server
+
+Jika menggunakan **Laragon**, letakkan di `C:\laragon\www`.  
+Jika menggunakan **XAMPP**, letakkan di `C:\xampp\htdocs`.
+
+**Clone dari GitHub:**
+```bash
+git clone https://github.com/zakyarielsyah11/Nemo-Security-Lab.git
+cd Nemo-Security-Lab
