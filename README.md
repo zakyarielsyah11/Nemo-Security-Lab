@@ -37,7 +37,7 @@ Aplikasi ini **HANYA** untuk digunakan di lingkungan lokal, laboratorium, atau s
 
 | OWASP | Kerentanan | Lokasi |
 |-------|------------|--------|
-| A1 – Broken Access Control | IDOR pada semua resource (products, files, projects, clients, employees, vulndb) | Semua controller `show`, `edit`, `update`, `destroy` |
+| A1 – Broken Access Control | IDOR pada semua resource | Semua controller `show`, `edit`, `update`, `destroy` |
 | A3 – Injection | SQL Injection pada pencarian | `ProductController`, `ProjectController`, `ClientController`, `EmployeeController`, `VulnDbController` |
 | A3 – Injection | OS Command Injection | `ToolController@ping`, `ToolController@traceroute` |
 | A3 – Injection | Stored XSS pada komentar proyek | `ProjectController@storeComment`, `projects/show.blade.php` |
@@ -69,4 +69,4 @@ Aplikasi ini **HANYA** untuk digunakan di lingkungan lokal, laboratorium, atau s
 
 2. **Install dependencies:**
    ```bash
-   composer install"# Nemo-Security-Lab" 
+   composer install
