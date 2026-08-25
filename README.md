@@ -47,24 +47,82 @@ Aplikasi ini **HANYA** untuk digunakan di lingkungan lokal, laboratorium, atau s
 
 ---
 
-## Kerentanan yang Disengaja (OWASP Top 10)
+## Kerentanan yang Terdapat
 
-| OWASP | Kerentanan | Lokasi |
-|-------|------------|--------|
-| A1 – Broken Access Control | IDOR pada semua resource | Semua controller `show`, `edit`, `update`, `destroy` |
-| A3 – Injection | SQL Injection pada pencarian | `ProductController`, `ProjectController`, `ClientController`, `EmployeeController`, `VulnDbController` |
-| A3 – Injection | OS Command Injection | `ToolController@ping`, `ToolController@traceroute` |
-| A3 – Injection | Stored XSS pada komentar proyek | `ProjectController@storeComment`, `projects/show.blade.php` |
-| A3 – Injection | Reflected XSS pada halaman depan | `welcome.blade.php` (parameter `search`) |
-| A5 – Security Misconfiguration | File `.env` dapat diakses publik | `routes/web.php` (`GET /env`) |
-| A5 – Security Misconfiguration | File log dapat diakses publik | `routes/web.php` (`GET /logs`) |
-| A5 – Security Misconfiguration | Debug mode aktif, error verbose | `.env` (`APP_DEBUG=true`) |
-| A7 – Authentication Failures | Tidak ada rate limiting, password policy lemah | `LoginController` |
-| A8 – Software Integrity Failures | Upload file tanpa validasi tipe (shell upload) | `FileController@upload` |
-| A8 – Software Integrity Failures | CSV Injection pada import | `ImportController` |
-| A10 – SSRF | Import avatar/file dari URL tanpa validasi | `ProfileController@updateAvatarFromUrl`, `FileController@importFromUrl`, `AdminFileController@importFromUrl` |
-| LFI | Local File Inclusion via parameter `path` | `FileViewController@viewByPath`, route `GET /lfi` |
-| Open Redirect | Parameter `redirect` pada halaman depan | `welcome.blade.php` |
+Aplikasi ini mengandung berbagai jenis kerentanan keamanan yang mengacu pada **OWASP Top 10**. Berikut penjelasan umum setiap kategori yang ada di dalam aplikasi:
+
+### 1. Broken Access Control (Insecure Direct Object Reference)
+Aplikasi memiliki kelemahan dalam memverifikasi hak akses pengguna terhadap sumber daya tertentu. Pengguna dengan peran terbatas mungkin dapat mengakses, mengubah, atau menghapus data milik pengguna lain hanya dengan memanipulasi parameter seperti ID pada URL.
+
+**Dampak:**  
+- Kebocoran data antar pengguna.  
+- Modifikasi atau penghapusan data tanpa izin.  
+- Potensi peningkatan hak akses.
+
+### 2. Injection (SQL Injection, XSS, Command Injection)
+Beberapa fitur tidak melakukan validasi atau sanitasi input dengan benar, sehingga memungkinkan penyisipan perintah berbahaya.
+
+- **SQL Injection:** Pada fitur pencarian atau autentikasi, input pengguna dapat memanipulasi query database.  
+- **Cross-Site Scripting (XSS):** Input yang tersimpan atau dipantulkan dapat mengeksekusi JavaScript di browser korban.  
+- **OS Command Injection:** Pada fitur yang menjalankan perintah sistem, input pengguna dapat disisipkan untuk menjalankan perintah tambahan.
+
+**Dampak:**  
+- Pencurian sesi, cookie, atau data sensitif.  
+- Manipulasi database.  
+- Eksekusi perintah di server.
+
+### 3. Security Misconfiguration
+Aplikasi menyertakan beberapa konfigurasi yang tidak aman, seperti:
+
+- Mode debug yang aktif.  
+- Pesan error yang terlalu rinci.  
+- File sensitif yang dapat diakses langsung.
+
+**Dampak:**  
+- Pengungkapan informasi sensitif (kredensial, path, konfigurasi).  
+- Memudahkan penyerang dalam eksploitasi lebih lanjut.
+
+### 4. Authentication Failures
+Mekanisme autentikasi tidak menerapkan kebijakan yang cukup kuat, misalnya:
+
+- Tidak ada pembatasan percobaan login (brute force).  
+- Kebijakan password yang lemah.  
+- Tidak ada mekanisme pengamanan sesi yang memadai.
+
+**Dampak:**  
+- Akun dapat diambil alih.  
+- Serangan brute force atau credential stuffing.
+
+### 5. Software and Data Integrity Failures
+Pada fitur upload dan import, aplikasi tidak memvalidasi dengan benar jenis dan isi file yang diterima.
+
+**Dampak:**  
+- Unggahan file berbahaya (misal web shell).  
+- Injeksi formula pada file CSV yang dapat dieksekusi saat dibuka di spreadsheet.
+
+### 6. Server-Side Request Forgery (SSRF)
+Aplikasi memiliki fitur yang mengambil sumber daya dari URL eksternal tanpa memvalidasi tujuan, sehingga dapat dimanfaatkan untuk mengakses layanan internal.
+
+**Dampak:**  
+- Pemindaian jaringan internal.  
+- Akses ke layanan cloud metadata.  
+- Bypass firewall.
+
+### 7. Local File Inclusion (LFI)
+Fitur baca file tidak membatasi path file yang dapat diakses, sehingga memungkinkan pembacaan file sensitif di server.
+
+**Dampak:**  
+- Pengungkapan file konfigurasi, kredensial, atau source code.  
+- Potensi eksekusi kode jika dikombinasikan dengan teknik lain.
+
+### 8. Open Redirect
+Beberapa parameter URL dapat dialihkan ke domain eksternal tanpa validasi.
+
+**Dampak:**  
+- Serangan phishing.  
+- Pencurian kredensial melalui redirect.
+
+> **Catatan:** Lokasi pasti setiap kerentanan **tidak dicantumkan** dalam README ini. Peserta harus menemukannya sendiri melalui pengujian dan analisis source code.
 
 ---
 
